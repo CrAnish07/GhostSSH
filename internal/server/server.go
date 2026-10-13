@@ -126,7 +126,8 @@ func (gossh *GoSSHServer) handleServerWebSocket(w http.ResponseWriter, r *http.R
 		ReadBufferSize:  ReadBufSize,
 		WriteBufferSize: WriteBufSize,
 		CheckOrigin: func(r *http.Request) bool {
-			return true
+			// For not it only reject the browser request
+			return r.Header.Get("Origin") == ""
 		},
 	}
 
