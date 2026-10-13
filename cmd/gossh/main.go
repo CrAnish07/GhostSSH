@@ -94,6 +94,8 @@ func main() {
 						Port:    cfg.HttpServerPort,
 						SSHPort: cfg.SSHDPort,
 						Timeout: time.Second * 3,
+
+						MaxConns: cfg.MaxConns,
 					},
 					logger,
 				).Run()
@@ -106,6 +108,8 @@ func main() {
 					Port:    cfg.HttpServerPort,
 					SSHPort: cfg.SSHDPort,
 					Timeout: time.Second * 3,
+
+					MaxConns: cfg.MaxConns,
 				},
 				logger,
 			).Run()

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"gossh/internal/log"
 	"io"
+	"math"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -22,6 +23,7 @@ type Config struct {
 	WSURL          string
 	Verbosity      log.LogLevel
 	Daemon         bool
+	MaxConns       int
 }
 
 const (
@@ -194,6 +196,7 @@ func ParseArgs(args []string) (Config, error) {
 		vvv        bool
 		verbose    bool
 		configFile string
+		maxConns   int
 	)
 
 	fs.IntVar(&port, "port", 0, "port")
@@ -202,6 +205,7 @@ func ParseArgs(args []string) (Config, error) {
 	fs.StringVar(&connect, "connect", "", "remote URL")
 	fs.StringVar(&target, "target", "", "remote URL")
 	fs.BoolVar(&daemon, "daemon", false, "daemonize")
+	fs.IntVar(&maxConns, "max-conns", math.MaxInt, "max-conns")
 	fs.BoolVar(&quiet, "quiet", false, "quiet")
 	fs.BoolVar(&v, "v", false, "info")
 	fs.BoolVar(&vv, "vv", false, "debug")
@@ -256,6 +260,8 @@ func ParseArgs(args []string) (Config, error) {
 	if daemon {
 		cfg.Daemon = true
 	}
+
+	cfg.MaxConns = maxConns
 
 	if quiet {
 		cfg.Verbosity = log.ERROR
