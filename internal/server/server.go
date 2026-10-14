@@ -7,6 +7,7 @@ import (
 	"gossh/internal/log"
 	"gossh/internal/tunnel"
 	"io"
+	"math"
 	"net"
 	"net/http"
 	"os"
@@ -83,6 +84,10 @@ func (gossh *GoSSHServer) Run() error {
 
 	gossh.logger.Info("gossh started in SERVER mode")
 	gossh.logger.Info("HTTP/WebSocket port: %d", gossh.conf.Port)
+
+	if gossh.conf.MaxConns != math.MaxInt {
+		gossh.logger.Info("Max connections: %d", gossh.conf.MaxConns)
+	}
 	gossh.logger.Info("SSH port: %d", gossh.conf.SSHPort)
 	gossh.logger.Info("Checking SSH connection")
 
