@@ -26,6 +26,7 @@ Version:
 Modes:
   server                Run in server mode
   client                Run in client mode
+  status                Show the status of a daemonized gossh process
 
 Verbosity control:
   -q, --quiet           Suppress info/debug output
@@ -37,10 +38,12 @@ Verbosity control:
 Server mode options:
   --port <port>         HTTP/WebSocket server port (default: 7777)
   --ssh <port>          SSH daemon port (default: 22)
+  --daemon              Run the server in the background
 
 Client mode options:
   --connect <url>       Remote WebSocket/HTTP URL (required)
   --port <port>         Local port to expose (default: 8888)
+  --daemon              Run the client in the background
 
 Config File option:
   --config <filepath>    Path to config file
@@ -48,6 +51,8 @@ Config File option:
 Examples:
   gossh server --port 7777 --ssh 22
   gossh client --connect https://example.com --port 8888
+  gossh server --daemon
+  gossh status
   gossh server -v --port 7777
   gossh client -vv --connect https://example.com --port 8888
 
