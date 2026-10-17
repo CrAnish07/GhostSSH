@@ -32,11 +32,11 @@ const (
 	Version = "1.5.0"
 
 	// DefaultSSHPort is the local SSH daemon port used by server mode.
-	DefaultSSHPort  = 22
+	DefaultSSHPort = 22
 	// DefaultHTTPPort is the HTTP/WebSocket listener port used by server mode.
 	DefaultHTTPPort = 7777
 	// DefaultTCPPort is the local TCP listener port used by client mode.
-	DefaultTCPPort  = 8888
+	DefaultTCPPort = 8888
 
 	// ServerMode selects server operation.
 	ServerMode = "server"

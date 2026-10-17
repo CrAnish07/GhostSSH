@@ -22,7 +22,7 @@ import (
 // Or are they shared invariants between client/server? Move to a shared package for using in both client.go and server.go
 const (
 	// ReadBufSize is the buffer size used when reading TCP and WebSocket data.
-	ReadBufSize    = 32 * 1024
+	ReadBufSize = 32 * 1024
 	// WriteBufSize is the WebSocket write buffer size.
 	WriteBufSize   = 32 * 1024
 	sshUnavailable = "SSH_UNAVAILABLE"
